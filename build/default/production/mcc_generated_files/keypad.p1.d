@@ -1,0 +1,9 @@
+build/default/production/mcc_generated_files/keypad.p1:  \
+mcc_generated_files/keypad.c  \
+mcc_generated_files/mcc.h  \
+mcc_generated_files/device_config.h  \
+mcc_generated_files/pin_manager.h  \
+mcc_generated_files/I2C_LCD.h  \
+mcc_generated_files/keypad.h  \
+mcc_generated_files/tmr0.h  \
+mcc_generated_files/eusart.h 
