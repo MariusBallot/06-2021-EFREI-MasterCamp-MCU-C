@@ -18,10 +18,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 "40
 [; ;./mcc_generated_files/I2C_LCD.h: 40: void LCD_Write_String(char*);
 [v _LCD_Write_String `(v ~T0 @X0 0 ef1`*uc ]
+"37 /Applications/microchip/xc8/v2.32/pic/include/c99/string.h
+[; ;/Applications/microchip/xc8/v2.32/pic/include/c99/string.h: 37: char *strncat (char *restrict, const char *restrict, size_t);
+[v _strncat `(*uc ~T0 @X0 0 ef3`*uc`*Cuc`ui ]
 [v F9591 `(v ~T0 @X0 1 tf1`ul ]
 "92 /Applications/microchip/mplabx/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8/pic/include/pic.h
 [v __delay `JF9591 ~T0 @X0 0 e ]
 [p i __delay ]
+"54 /Applications/microchip/xc8/v2.32/pic/include/c99/string.h
+[; ;/Applications/microchip/xc8/v2.32/pic/include/c99/string.h: 54: size_t strlen (const char *);
+[v _strlen `(ui ~T0 @X0 0 ef1`*Cuc ]
 "2 ./mcc_generated_files/keypad.h
 [; ;./mcc_generated_files/keypad.h: 2: void keypad_scanner(char *key_o, unsigned int *val_o);
 [v _keypad_scanner `(v ~T0 @X0 0 ef2`*uc`*ui ]
@@ -34,9 +40,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1 ./mcc_generated_files/keypad.h
 [; ;./mcc_generated_files/keypad.h: 1: void switch_press_scan(char *key_o, unsigned int *val_o);
 [v _switch_press_scan `(v ~T0 @X0 0 ef2`*uc`*ui ]
-"39 ./mcc_generated_files/I2C_LCD.h
-[; ;./mcc_generated_files/I2C_LCD.h: 39: void LCD_Write_Char(char);
-[v _LCD_Write_Char `(v ~T0 @X0 0 ef1`uc ]
 "321 ./mcc_generated_files/eusart.h
 [; ;./mcc_generated_files/eusart.h: 321: uint8_t EUSART_Read(void);
 [v _EUSART_Read `(uc ~T0 @X0 0 ef ]
@@ -1369,453 +1372,627 @@ Version 4.0 HI-TECH Software Intermediate Code
 "27883
 [; ;/Applications/microchip/mplabx/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8/pic/include/proc/pic16f1619.h: 27883: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"45 main.c
-[; ;main.c: 45: uint8_t code = 0x00;
+"48 main.c
+[; ;main.c: 48: uint8_t code = 0x00;
 [v _code `uc ~T0 @X0 1 e ]
 [i _code
 -> -> 0 `i `uc
 ]
-"46
-[; ;main.c: 46: char Key = 'n';
+"49
+[; ;main.c: 49: char Key = 'n';
 [v _Key `uc ~T0 @X0 1 e ]
 [i _Key
 -> -> 110 `ui `uc
 ]
-"47
-[; ;main.c: 47: unsigned int Val, Val_mod, Code, ID;
+"50
+[; ;main.c: 50: unsigned int Val, Val_mod, Code, ID;
 [v _Val `ui ~T0 @X0 1 e ]
 [v _Val_mod `ui ~T0 @X0 1 e ]
 [v _Code `ui ~T0 @X0 1 e ]
 [v _ID `ui ~T0 @X0 1 e ]
-"48
-[; ;main.c: 48: unsigned int counter = 13;
+"51
+[; ;main.c: 51: unsigned int Val_mods[13];
+[v _Val_mods `ui ~T0 @X0 -> 13 `i e ]
+"52
+[; ;main.c: 52: unsigned int counter = 13;
 [v _counter `ui ~T0 @X0 1 e ]
 [i _counter
 -> -> 13 `i `ui
 ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"50
-[; ;main.c: 50: void main(void) {
+"58
+[; ;main.c: 58: void main(void)
 [v _main `(v ~T0 @X0 1 ef ]
+"59
+[; ;main.c: 59: {
 {
 [e :U _main ]
 [f ]
-"51
-[; ;main.c: 51:   SYSTEM_Initialize();
-[e ( _SYSTEM_Initialize ..  ]
-"52
-[; ;main.c: 52:   I2C_Master_Init();
-[e ( _I2C_Master_Init ..  ]
-"53
-[; ;main.c: 53:   LCD_Init(0x4E);
-[e ( _LCD_Init (1 -> -> 78 `i `uc ]
-"55
-[; ;main.c: 55:     LCD_Clear();
-[e ( _LCD_Clear ..  ]
-"56
-[; ;main.c: 56:     LCD_Set_Cursor(1, 1);
-[e ( _LCD_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-"57
-[; ;main.c: 57:     LCD_Write_String("Master Camp 2021");
-[e ( _LCD_Write_String (1 :s 1C ]
-"58
-[; ;main.c: 58:     LCD_Set_Cursor(2, 1);
-[e ( _LCD_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
-"59
-[; ;main.c: 59:     LCD_Write_String("  EFREI Paris ");
-[e ( _LCD_Write_String (1 :s 2C ]
 "60
-[; ;main.c: 60:     _delay((unsigned long)((2500)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 2500 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;main.c: 60:   SYSTEM_Initialize();
+[e ( _SYSTEM_Initialize ..  ]
+"61
+[; ;main.c: 61:   I2C_Master_Init();
+[e ( _I2C_Master_Init ..  ]
 "62
-[; ;main.c: 62:     LCD_Clear();
-[e ( _LCD_Clear ..  ]
-"63
-[; ;main.c: 63:     LCD_Set_Cursor(1, 1);
-[e ( _LCD_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+[; ;main.c: 62:   LCD_Init(0x4E);
+[e ( _LCD_Init (1 -> -> 78 `i `uc ]
 "64
-[; ;main.c: 64:     LCD_Write_String("  EFREI Paris ");
-[e ( _LCD_Write_String (1 :s 3C ]
-"65
-[; ;main.c: 65:     LCD_Set_Cursor(2, 1);
-[e ( _LCD_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
-"66
-[; ;main.c: 66:     LCD_Write_String("Embedded Systems");
-[e ( _LCD_Write_String (1 :s 4C ]
-"67
-[; ;main.c: 67:     _delay((unsigned long)((2500)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 2500 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"69
-[; ;main.c: 69:     LCD_Clear();
+[; ;main.c: 64:   LCD_Clear();
 [e ( _LCD_Clear ..  ]
-"70
-[; ;main.c: 70:     LCD_Set_Cursor(1, 1);
+"65
+[; ;main.c: 65:   LCD_Set_Cursor(1, 1);
 [e ( _LCD_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+"66
+[; ;main.c: 66:   LCD_Write_String("Solution Factory");
+[e ( _LCD_Write_String (1 :s 1C ]
+[v F9894 `uc ~T0 @X0 -> 8 `i s ]
+[i F9894
+:U ..
+"68
+[; ;main.c: 68:   char msg[] = "WELCOME";
+-> 87 `c
+-> 69 `c
+-> 76 `c
+-> 67 `c
+-> 79 `c
+-> 77 `c
+-> 69 `c
+-> 0 `c
+..
+]
+[v _msg `uc ~T0 @X0 -> 8 `i a ]
+[e = _msg F9894 ]
+[v F9896 `uc ~T0 @X0 -> -> 1 `i `ux s ]
+[i F9896
+:U ..
+"69
+[; ;main.c: 69:   char dispmsg[] = "";
+-> 0 `c
+..
+]
+[v _dispmsg `uc ~T0 @X0 -> -> 1 `i `ux a ]
+[e = _dispmsg F9896 ]
+"70
+[; ;main.c: 70:   for (int i = 0; i < strlen(msg); i++)
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $U 1223  ]
+[e :U 1220 ]
 "71
-[; ;main.c: 71:     LCD_Write_String("  * Projet *");
-[e ( _LCD_Write_String (1 :s 5C ]
+[; ;main.c: 71:   {
+{
 "72
 [; ;main.c: 72:     LCD_Set_Cursor(2, 1);
 [e ( _LCD_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
 "73
-[; ;main.c: 73:     LCD_Write_String("Solution Factory");
-[e ( _LCD_Write_String (1 :s 6C ]
+[; ;main.c: 73:     strncat(&dispmsg, &msg[i], 1);
+[e ( _strncat (3 , , -> &U _dispmsg `*uc -> &U *U + &U _msg * -> -> _i `ui `ux -> -> # *U &U _msg `ui `ux `*Cuc -> -> 1 `i `ui ]
 "74
-[; ;main.c: 74:     _delay((unsigned long)((2500)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 2500 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;main.c: 74:     LCD_Write_String(dispmsg);
+[e ( _LCD_Write_String (1 &U _dispmsg ]
+"75
+[; ;main.c: 75:     _delay((unsigned long)((300)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 300 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "76
-[; ;main.c: 76:     LCD_Clear();
-[e ( _LCD_Clear ..  ]
-"77
-[; ;main.c: 77:     LCD_Set_Cursor(1, 1);
-[e ( _LCD_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-"78
-[; ;main.c: 78:     LCD_Write_String("Press '*' to");
-[e ( _LCD_Write_String (1 :s 7C ]
-"79
-[; ;main.c: 79:     LCD_Set_Cursor(2, 1);
-[e ( _LCD_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
-"80
-[; ;main.c: 80:     LCD_Write_String("continue ..");
-[e ( _LCD_Write_String (1 :s 8C ]
-"82
-[; ;main.c: 82:     Key = 'n';
-[e = _Key -> -> 110 `ui `uc ]
-"83
-[; ;main.c: 83:     while(Key != '*')
-[e $U 1219  ]
-[e :U 1220 ]
-"84
-[; ;main.c: 84:     {
-{
-"85
-[; ;main.c: 85:         keypad_scanner(&Key, &Val);
-[e ( _keypad_scanner (2 , &U _Key &U _Val ]
-"86
-[; ;main.c: 86:     }
+[; ;main.c: 76:   }
 }
-[e :U 1219 ]
-"83
-[; ;main.c: 83:     while(Key != '*')
-[e $ != -> _Key `ui -> 42 `ui 1220  ]
-[e :U 1221 ]
-"89
-[; ;main.c: 89:     while (!EUSART_is_tx_ready());
-[e $U 1222  ]
+[e ++ _i -> 1 `i ]
 [e :U 1223 ]
-[e :U 1222 ]
-[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1223  ]
-[e :U 1224 ]
-"90
-[; ;main.c: 90:     EUSART_Write(Val);
-[e ( _EUSART_Write (1 -> _Val `uc ]
-"92
-[; ;main.c: 92:     LCD_Clear();
-[e ( _LCD_Clear ..  ]
-"93
-[; ;main.c: 93:     LCD_Set_Cursor(1, 1);
-[e ( _LCD_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-"94
-[; ;main.c: 94:     LCD_Write_String ("Initialize FPGA");
-[e ( _LCD_Write_String (1 :s 9C ]
-"95
-[; ;main.c: 95:     LCD_Set_Cursor(2,1);
-[e ( _LCD_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
-"96
-[; ;main.c: 96:     LCD_Write_String("Please Wait...");
-[e ( _LCD_Write_String (1 :s 10C ]
-"98
-[; ;main.c: 98:     _delay((unsigned long)((2000)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"101
-[; ;main.c: 101:     while(1)
-[e :U 1226 ]
-"102
-[; ;main.c: 102:     {
-{
-"103
-[; ;main.c: 103:         LCD_Clear();
-[e ( _LCD_Clear ..  ]
-"104
-[; ;main.c: 104:         LCD_Set_Cursor(1, 1);
-[e ( _LCD_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-"105
-[; ;main.c: 105:         LCD_Write_String ("Enter Password");
-[e ( _LCD_Write_String (1 :s 11C ]
-"106
-[; ;main.c: 106:         LCD_Set_Cursor(2,1);
-[e ( _LCD_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
-"108
-[; ;main.c: 108:         counter = 0;
-[e = _counter -> -> 0 `i `ui ]
-"109
-[; ;main.c: 109:         while ( (counter <13 ))
-[e $U 1228  ]
-[e :U 1229 ]
-"110
-[; ;main.c: 110:         {
-{
-"111
-[; ;main.c: 111:             switch_press_scan(&Key, &Val);
-[e ( _switch_press_scan (2 , &U _Key &U _Val ]
-"112
-[; ;main.c: 112:             LCD_Write_Char(Key);
-[e ( _LCD_Write_Char (1 _Key ]
-"113
-[; ;main.c: 113:             ID = counter;
-[e = _ID _counter ]
-"114
-[; ;main.c: 114:             ID &= 0x0F;
-[e =& _ID -> -> 15 `i `ui ]
-"115
-[; ;main.c: 115:             ID <<=4;
-[e =<< _ID -> -> 4 `i `ui ]
-"116
-[; ;main.c: 116:             Code = Val;
-[e = _Code _Val ]
-"117
-[; ;main.c: 117:             Code &= 0x0F;
-[e =& _Code -> -> 15 `i `ui ]
-"118
-[; ;main.c: 118:             Val_mod = ID | Code;
-[e = _Val_mod | _ID _Code ]
-"119
-[; ;main.c: 119:             while(!EUSART_is_tx_ready());
-[e $U 1231  ]
-[e :U 1232 ]
-[e :U 1231 ]
-[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1232  ]
-[e :U 1233 ]
-"120
-[; ;main.c: 120:             EUSART_Write(Val_mod);
-[e ( _EUSART_Write (1 -> _Val_mod `uc ]
-"121
-[; ;main.c: 121:             counter = counter + 1;
-[e = _counter + _counter -> -> 1 `i `ui ]
-"122
-[; ;main.c: 122:             _delay((unsigned long)((500)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"123
-[; ;main.c: 123:         }
+[e $ < -> _i `ui ( _strlen (1 -> &U _msg `*Cuc 1220  ]
+[e :U 1221 ]
 }
-[e :U 1228 ]
-"109
-[; ;main.c: 109:         while ( (counter <13 ))
-[e $ < _counter -> -> 13 `i `ui 1229  ]
-[e :U 1230 ]
-"124
-[; ;main.c: 124:         LCD_Clear();
+"78
+[; ;main.c: 78:   _delay((unsigned long)((2000)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"80
+[; ;main.c: 80:   LCD_Clear();
 [e ( _LCD_Clear ..  ]
-"125
-[; ;main.c: 125:         LCD_Set_Cursor(1, 1);
+"81
+[; ;main.c: 81:   LCD_Set_Cursor(1, 1);
 [e ( _LCD_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-"126
-[; ;main.c: 126:         LCD_Write_String ("Press '#' to");
-[e ( _LCD_Write_String (1 :s 12C ]
-"127
-[; ;main.c: 127:         LCD_Set_Cursor(2,1);
+"82
+[; ;main.c: 82:   LCD_Write_String("Press '*' to");
+[e ( _LCD_Write_String (1 :s 2C ]
+"83
+[; ;main.c: 83:   LCD_Set_Cursor(2, 1);
 [e ( _LCD_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
-"128
-[; ;main.c: 128:         LCD_Write_String ("continue ...");
-[e ( _LCD_Write_String (1 :s 13C ]
-"130
-[; ;main.c: 130:         Key = 'n';
+"84
+[; ;main.c: 84:   LCD_Write_String("continue ..");
+[e ( _LCD_Write_String (1 :s 3C ]
+"86
+[; ;main.c: 86:   Key = 'n';
 [e = _Key -> -> 110 `ui `uc ]
-"131
-[; ;main.c: 131:         while (Key != '#')
-[e $U 1234  ]
-[e :U 1235 ]
-"132
-[; ;main.c: 132:         {
+"87
+[; ;main.c: 87:   while (Key != '*')
+[e $U 1224  ]
+[e :U 1225 ]
+"88
+[; ;main.c: 88:   {
 {
-"133
-[; ;main.c: 133:             keypad_scanner(&Key, &Val);
+"89
+[; ;main.c: 89:     keypad_scanner(&Key, &Val);
 [e ( _keypad_scanner (2 , &U _Key &U _Val ]
-"134
-[; ;main.c: 134:         }
+"90
+[; ;main.c: 90:   }
 }
-[e :U 1234 ]
-"131
-[; ;main.c: 131:         while (Key != '#')
-[e $ != -> _Key `ui -> 35 `ui 1235  ]
-[e :U 1236 ]
-"135
-[; ;main.c: 135:         while (!EUSART_is_tx_ready());
-[e $U 1237  ]
-[e :U 1238 ]
-[e :U 1237 ]
-[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1238  ]
-[e :U 1239 ]
-"136
-[; ;main.c: 136:         EUSART_Write(Val);
+[e :U 1224 ]
+"87
+[; ;main.c: 87:   while (Key != '*')
+[e $ != -> _Key `ui -> 42 `ui 1225  ]
+[e :U 1226 ]
+"93
+[; ;main.c: 93:   while (!EUSART_is_tx_ready())
+[e $U 1227  ]
+[e :U 1228 ]
+"94
+[; ;main.c: 94:     ;
+[e :U 1227 ]
+"93
+[; ;main.c: 93:   while (!EUSART_is_tx_ready())
+[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1228  ]
+[e :U 1229 ]
+"95
+[; ;main.c: 95:   EUSART_Write(Val);
 [e ( _EUSART_Write (1 -> _Val `uc ]
-"138
-[; ;main.c: 138:         LCD_Clear();
+"97
+[; ;main.c: 97:   LCD_Clear();
 [e ( _LCD_Clear ..  ]
-"139
-[; ;main.c: 139:         LCD_Set_Cursor(1, 1);
+"98
+[; ;main.c: 98:   LCD_Set_Cursor(1, 1);
 [e ( _LCD_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-"140
-[; ;main.c: 140:         LCD_Write_String ("FPGA Processing");
-[e ( _LCD_Write_String (1 :s 14C ]
-"141
-[; ;main.c: 141:         LCD_Set_Cursor(2,1);
+"99
+[; ;main.c: 99:   LCD_Write_String("Initialisation FPGA");
+[e ( _LCD_Write_String (1 :s 4C ]
+"100
+[; ;main.c: 100:   LCD_Set_Cursor(2, 1);
 [e ( _LCD_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
-"142
-[; ;main.c: 142:         LCD_Write_String ("Please wait ...");
-[e ( _LCD_Write_String (1 :s 15C ]
-"144
-[; ;main.c: 144:         code = EUSART_Read();
-[e = _code ( _EUSART_Read ..  ]
-"145
-[; ;main.c: 145:         RC1STA = 0x00;
-[e = _RC1STA -> -> 0 `i `uc ]
-"147
-[; ;main.c: 147:         _delay((unsigned long)((2000)*(4000000/4000.0)));
+"101
+[; ;main.c: 101:   LCD_Write_String("Please Wait...");
+[e ( _LCD_Write_String (1 :s 5C ]
+"103
+[; ;main.c: 103:   _delay((unsigned long)((2000)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"149
-[; ;main.c: 149:         if (code == 0xF1)
-[e $ ! == -> _code `i -> 241 `i 1240  ]
-"150
-[; ;main.c: 150:         {
+"105
+[; ;main.c: 105:   while (1)
+[e :U 1231 ]
+"106
+[; ;main.c: 106:   {
 {
-"151
-[; ;main.c: 151:             LCD_Clear();
+"107
+[; ;main.c: 107:     LCD_Clear();
 [e ( _LCD_Clear ..  ]
-"152
-[; ;main.c: 152:             LCD_Set_Cursor(1, 1);
+"108
+[; ;main.c: 108:     LCD_Set_Cursor(1, 1);
 [e ( _LCD_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-"153
-[; ;main.c: 153:             LCD_Write_String ("Code is correct");
-[e ( _LCD_Write_String (1 :s 16C ]
-"154
-[; ;main.c: 154:             LCD_Set_Cursor(2,1);
+"109
+[; ;main.c: 109:     LCD_Write_String("Pwd | # > Submit");
+[e ( _LCD_Write_String (1 :s 6C ]
+"110
+[; ;main.c: 110:     LCD_Set_Cursor(2, 1);
 [e ( _LCD_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
-"155
-[; ;main.c: 155:             LCD_Write_String ("Thank you..");
-[e ( _LCD_Write_String (1 :s 17C ]
-"156
-[; ;main.c: 156:         }
-}
-[e $U 1241  ]
-"157
-[; ;main.c: 157:         else
-[e :U 1240 ]
-"158
-[; ;main.c: 158:         {
+"112
+[; ;main.c: 112:     counter = 0;
+[e = _counter -> -> 0 `i `ui ]
+"113
+[; ;main.c: 113:     _Bool forcesubmit = 0;
+[v _forcesubmit `a ~T0 @X0 1 a ]
+[e = _forcesubmit -> -> 0 `i `a ]
+[v F9901 `uc ~T0 @X0 -> 16 `i s ]
+[i F9901
+:U ..
+"114
+[; ;main.c: 114:     char dispCode[16] = "";
+-> 0 `c
+..
+]
+[v _dispCode `uc ~T0 @X0 -> 16 `i a ]
+[e = _dispCode F9901 ]
+"115
+[; ;main.c: 115:     while ((counter < 13))
+[e $U 1233  ]
+[e :U 1234 ]
+"116
+[; ;main.c: 116:     {
 {
-"159
-[; ;main.c: 159:             LCD_Clear();
+"117
+[; ;main.c: 117:       switch_press_scan(&Key, &Val);
+[e ( _switch_press_scan (2 , &U _Key &U _Val ]
+"118
+[; ;main.c: 118:       if (Key == '#')
+[e $ ! == -> _Key `ui -> 35 `ui 1236  ]
+"119
+[; ;main.c: 119:       {
+{
+"120
+[; ;main.c: 120:         forcesubmit = 1;
+[e = _forcesubmit -> -> 1 `i `a ]
+"121
+[; ;main.c: 121:         counter = 13;
+[e = _counter -> -> 13 `i `ui ]
+"122
+[; ;main.c: 122:       }
+}
+[e $U 1237  ]
+"123
+[; ;main.c: 123:       else
+[e :U 1236 ]
+"124
+[; ;main.c: 124:       {
+{
+"125
+[; ;main.c: 125:         if (Key == 'D' && counter > 0)
+[e $ ! && == -> _Key `ui -> 68 `ui > _counter -> -> 0 `i `ui 1238  ]
+"126
+[; ;main.c: 126:         {
+{
+"127
+[; ;main.c: 127:           counter = counter - 1;
+[e = _counter - _counter -> -> 1 `i `ui ]
+"128
+[; ;main.c: 128:           int size = strlen(dispCode);
+[v _size `i ~T0 @X0 1 a ]
+[e = _size -> ( _strlen (1 -> &U _dispCode `*Cuc `i ]
+"129
+[; ;main.c: 129:           dispCode[size - 1] = '\0';
+[e = *U + &U _dispCode * -> -> - _size -> 1 `i `ui `ux -> -> # *U &U _dispCode `ui `ux -> -> 0 `ui `uc ]
+"130
+[; ;main.c: 130:           LCD_Clear();
 [e ( _LCD_Clear ..  ]
-"160
-[; ;main.c: 160:             LCD_Set_Cursor(1, 1);
+"131
+[; ;main.c: 131:           LCD_Set_Cursor(1, 1);
 [e ( _LCD_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+"132
+[; ;main.c: 132:           LCD_Write_String("Pwd | # > Submit");
+[e ( _LCD_Write_String (1 :s 7C ]
+"133
+[; ;main.c: 133:           LCD_Set_Cursor(2, 1);
+[e ( _LCD_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
+"134
+[; ;main.c: 134:           LCD_Write_String(dispCode);
+[e ( _LCD_Write_String (1 &U _dispCode ]
+"135
+[; ;main.c: 135:         }
+}
+[e $U 1239  ]
+"136
+[; ;main.c: 136:         else
+[e :U 1238 ]
+"137
+[; ;main.c: 137:         {
+{
+"140
+[; ;main.c: 140:           strncat(&dispCode, &Key, 1);
+[e ( _strncat (3 , , -> &U _dispCode `*uc -> &U _Key `*Cuc -> -> 1 `i `ui ]
+"142
+[; ;main.c: 142:           LCD_Set_Cursor(2, 1);
+[e ( _LCD_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
+"143
+[; ;main.c: 143:           LCD_Write_String(dispCode);
+[e ( _LCD_Write_String (1 &U _dispCode ]
+"145
+[; ;main.c: 145:           ID = counter;
+[e = _ID _counter ]
+"146
+[; ;main.c: 146:           ID &= 0x0F;
+[e =& _ID -> -> 15 `i `ui ]
+"147
+[; ;main.c: 147:           ID <<= 4;
+[e =<< _ID -> -> 4 `i `ui ]
+"148
+[; ;main.c: 148:           Code = Val;
+[e = _Code _Val ]
+"149
+[; ;main.c: 149:           Code &= 0x0F;
+[e =& _Code -> -> 15 `i `ui ]
+"150
+[; ;main.c: 150:           Val_mod = ID | Code;
+[e = _Val_mod | _ID _Code ]
+"151
+[; ;main.c: 151:           Val_mods[counter] = Val_mod;
+[e = *U + &U _Val_mods * -> _counter `ux -> -> # *U &U _Val_mods `ui `ux _Val_mod ]
+"153
+[; ;main.c: 153:           counter = counter + 1;
+[e = _counter + _counter -> -> 1 `i `ui ]
+"154
+[; ;main.c: 154:           _delay((unsigned long)((500)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"155
+[; ;main.c: 155:         }
+}
+[e :U 1239 ]
+"156
+[; ;main.c: 156:       }
+}
+[e :U 1237 ]
+"157
+[; ;main.c: 157:     }
+}
+[e :U 1233 ]
+"115
+[; ;main.c: 115:     while ((counter < 13))
+[e $ < _counter -> -> 13 `i `ui 1234  ]
+[e :U 1235 ]
+"159
+[; ;main.c: 159:     if (!forcesubmit)
+[e $ ! ! != -> _forcesubmit `i -> 0 `i 1240  ]
+"160
+[; ;main.c: 160:     {
+{
 "161
-[; ;main.c: 161:             LCD_Write_String("Code is wrong");
-[e ( _LCD_Write_String (1 :s 18C ]
+[; ;main.c: 161:       LCD_Clear();
+[e ( _LCD_Clear ..  ]
 "162
-[; ;main.c: 162:         }
+[; ;main.c: 162:       LCD_Set_Cursor(1, 1);
+[e ( _LCD_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+"163
+[; ;main.c: 163:       LCD_Write_String("Press '#' to");
+[e ( _LCD_Write_String (1 :s 8C ]
+"164
+[; ;main.c: 164:       LCD_Set_Cursor(2, 1);
+[e ( _LCD_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
+"165
+[; ;main.c: 165:       LCD_Write_String("continue ...");
+[e ( _LCD_Write_String (1 :s 9C ]
+"167
+[; ;main.c: 167:       Key = 'n';
+[e = _Key -> -> 110 `ui `uc ]
+"168
+[; ;main.c: 168:       while (Key != '#')
+[e $U 1241  ]
+[e :U 1242 ]
+"169
+[; ;main.c: 169:       {
+{
+"170
+[; ;main.c: 170:         keypad_scanner(&Key, &Val);
+[e ( _keypad_scanner (2 , &U _Key &U _Val ]
+"171
+[; ;main.c: 171:       }
 }
 [e :U 1241 ]
-"163
-[; ;main.c: 163:         _delay((unsigned long)((2000)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"165
-[; ;main.c: 165:         LCD_Clear();
-[e ( _LCD_Clear ..  ]
-"166
-[; ;main.c: 166:         LCD_Set_Cursor(1, 1);
-[e ( _LCD_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-"167
-[; ;main.c: 167:         LCD_Write_String ("Press '*' to ");
-[e ( _LCD_Write_String (1 :s 19C ]
 "168
-[; ;main.c: 168:         LCD_Set_Cursor(2,1);
-[e ( _LCD_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
-"169
-[; ;main.c: 169:         LCD_Write_String ("try again..");
-[e ( _LCD_Write_String (1 :s 20C ]
-"171
-[; ;main.c: 171:         Key = 'n';
-[e = _Key -> -> 110 `ui `uc ]
-"172
-[; ;main.c: 172:         while (Key != '*')
-[e $U 1242  ]
+[; ;main.c: 168:       while (Key != '#')
+[e $ != -> _Key `ui -> 35 `ui 1242  ]
 [e :U 1243 ]
-"173
-[; ;main.c: 173:         {
-{
-"174
-[; ;main.c: 174:             keypad_scanner(&Key, &Val);
-[e ( _keypad_scanner (2 , &U _Key &U _Val ]
-"175
-[; ;main.c: 175:         }
-}
-[e :U 1242 ]
 "172
-[; ;main.c: 172:         while (Key != '*')
-[e $ != -> _Key `ui -> 42 `ui 1243  ]
-[e :U 1244 ]
-"176
-[; ;main.c: 176:         RC1STA = 0x90;
-[e = _RC1STA -> -> 144 `i `uc ]
-"178
-[; ;main.c: 178:         while(!EUSART_is_tx_ready());
-[e $U 1245  ]
-[e :U 1246 ]
-[e :U 1245 ]
-[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1246  ]
-[e :U 1247 ]
-"179
-[; ;main.c: 179:         EUSART_Write(Val);
-[e ( _EUSART_Write (1 -> _Val `uc ]
-"181
-[; ;main.c: 181:         LCD_Clear();
+[; ;main.c: 172:     }
+}
+[e :U 1240 ]
+"174
+[; ;main.c: 174:     LCD_Clear();
 [e ( _LCD_Clear ..  ]
-"182
-[; ;main.c: 182:         LCD_Set_Cursor(1, 1);
+"175
+[; ;main.c: 175:     LCD_Set_Cursor(1, 1);
 [e ( _LCD_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-"183
-[; ;main.c: 183:         LCD_Write_String ("Initialize the FPGA");
-[e ( _LCD_Write_String (1 :s 21C ]
-"184
-[; ;main.c: 184:         LCD_Set_Cursor(2,1);
+"176
+[; ;main.c: 176:     LCD_Write_String("Sending Code");
+[e ( _LCD_Write_String (1 :s 10C ]
+"177
+[; ;main.c: 177:     LCD_Set_Cursor(2, 1);
 [e ( _LCD_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
+"178
+[; ;main.c: 178:     LCD_Write_String("...");
+[e ( _LCD_Write_String (1 :s 11C ]
+"180
+[; ;main.c: 180:     for (int i = 0; i < 13; i++)
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 13 `i 1244  ]
+[e $U 1245  ]
+[e :U 1244 ]
+"181
+[; ;main.c: 181:     {
+{
+"182
+[; ;main.c: 182:       while (!EUSART_is_tx_ready())
+[e $U 1247  ]
+[e :U 1248 ]
+"183
+[; ;main.c: 183:         ;
+[e :U 1247 ]
+"182
+[; ;main.c: 182:       while (!EUSART_is_tx_ready())
+[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1248  ]
+[e :U 1249 ]
+"184
+[; ;main.c: 184:       EUSART_Write(Val_mods[i]);
+[e ( _EUSART_Write (1 -> *U + &U _Val_mods * -> -> _i `ui `ux -> -> # *U &U _Val_mods `ui `ux `uc ]
 "185
-[; ;main.c: 185:         LCD_Write_String ("Please Wait ..");
-[e ( _LCD_Write_String (1 :s 22C ]
-"187
-[; ;main.c: 187:         _delay((unsigned long)((2000)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;main.c: 185:       _delay((unsigned long)((500)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"186
+[; ;main.c: 186:     }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 13 `i 1244  ]
+[e :U 1245 ]
+}
 "188
-[; ;main.c: 188:     }
-}
-[e :U 1225 ]
-[e $U 1226  ]
-[e :U 1227 ]
+[; ;main.c: 188:     while (!EUSART_is_tx_ready())
+[e $U 1250  ]
+[e :U 1251 ]
+"189
+[; ;main.c: 189:       ;
+[e :U 1250 ]
+"188
+[; ;main.c: 188:     while (!EUSART_is_tx_ready())
+[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1251  ]
+[e :U 1252 ]
 "190
-[; ;main.c: 190: }
-[e :UE 1218 ]
+[; ;main.c: 190:     EUSART_Write(Val);
+[e ( _EUSART_Write (1 -> _Val `uc ]
+"192
+[; ;main.c: 192:     LCD_Clear();
+[e ( _LCD_Clear ..  ]
+"193
+[; ;main.c: 193:     LCD_Set_Cursor(1, 1);
+[e ( _LCD_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+"194
+[; ;main.c: 194:     LCD_Write_String("FPGA Processing");
+[e ( _LCD_Write_String (1 :s 12C ]
+"195
+[; ;main.c: 195:     LCD_Set_Cursor(2, 1);
+[e ( _LCD_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
+"196
+[; ;main.c: 196:     LCD_Write_String("Please wait ...");
+[e ( _LCD_Write_String (1 :s 13C ]
+"198
+[; ;main.c: 198:     code = EUSART_Read();
+[e = _code ( _EUSART_Read ..  ]
+"199
+[; ;main.c: 199:     RC1STA = 0x00;
+[e = _RC1STA -> -> 0 `i `uc ]
+"201
+[; ;main.c: 201:     _delay((unsigned long)((2000)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"203
+[; ;main.c: 203:     if (code == 0xF1)
+[e $ ! == -> _code `i -> 241 `i 1253  ]
+"204
+[; ;main.c: 204:     {
+{
+"205
+[; ;main.c: 205:       LCD_Clear();
+[e ( _LCD_Clear ..  ]
+"206
+[; ;main.c: 206:       LCD_Set_Cursor(1, 1);
+[e ( _LCD_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+"207
+[; ;main.c: 207:       LCD_Write_String("Code is correct");
+[e ( _LCD_Write_String (1 :s 14C ]
+"208
+[; ;main.c: 208:       LCD_Set_Cursor(2, 1);
+[e ( _LCD_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
+"209
+[; ;main.c: 209:       LCD_Write_String("Thank you..");
+[e ( _LCD_Write_String (1 :s 15C ]
+"210
+[; ;main.c: 210:     }
 }
-[a 6C 83 111 108 117 116 105 111 110 32 70 97 99 116 111 114 121 0 ]
-[a 16C 67 111 100 101 32 105 115 32 99 111 114 114 101 99 116 0 ]
-[a 4C 69 109 98 101 100 100 101 100 32 83 121 115 116 101 109 115 0 ]
-[a 7C 80 114 101 115 115 32 39 42 39 32 116 111 0 ]
-[a 12C 80 114 101 115 115 32 39 35 39 32 116 111 0 ]
-[a 18C 67 111 100 101 32 105 115 32 119 114 111 110 103 0 ]
-[a 14C 70 80 71 65 32 80 114 111 99 101 115 115 105 110 103 0 ]
-[a 11C 69 110 116 101 114 32 80 97 115 115 119 111 114 100 0 ]
-[a 9C 73 110 105 116 105 97 108 105 122 101 32 70 80 71 65 0 ]
-[a 21C 73 110 105 116 105 97 108 105 122 101 32 116 104 101 32 70 80 71 65 0 ]
-[a 1C 77 97 115 116 101 114 32 67 97 109 112 32 50 48 50 49 0 ]
-[a 17C 84 104 97 110 107 32 121 111 117 46 46 0 ]
-[a 20C 116 114 121 32 97 103 97 105 110 46 46 0 ]
-[a 10C 80 108 101 97 115 101 32 87 97 105 116 46 46 46 0 ]
-[a 15C 80 108 101 97 115 101 32 119 97 105 116 32 46 46 46 0 ]
-[a 13C 99 111 110 116 105 110 117 101 32 46 46 46 0 ]
-[a 22C 80 108 101 97 115 101 32 87 97 105 116 32 46 46 0 ]
-[a 8C 99 111 110 116 105 110 117 101 32 46 46 0 ]
-[a 5C 32 32 42 32 80 114 111 106 101 116 32 42 0 ]
-[a 2C 32 32 69 70 82 69 73 32 80 97 114 105 115 32 0 ]
-[a 3C 32 32 69 70 82 69 73 32 80 97 114 105 115 32 0 ]
-[a 19C 80 114 101 115 115 32 39 42 39 32 116 111 32 0 ]
+[e $U 1254  ]
+"211
+[; ;main.c: 211:     else
+[e :U 1253 ]
+"212
+[; ;main.c: 212:     {
+{
+"213
+[; ;main.c: 213:       LCD_Clear();
+[e ( _LCD_Clear ..  ]
+"214
+[; ;main.c: 214:       LCD_Set_Cursor(1, 1);
+[e ( _LCD_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+"215
+[; ;main.c: 215:       LCD_Write_String("Code is wrong");
+[e ( _LCD_Write_String (1 :s 16C ]
+"216
+[; ;main.c: 216:     }
+}
+[e :U 1254 ]
+"217
+[; ;main.c: 217:     _delay((unsigned long)((2000)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"219
+[; ;main.c: 219:     LCD_Clear();
+[e ( _LCD_Clear ..  ]
+"220
+[; ;main.c: 220:     LCD_Set_Cursor(1, 1);
+[e ( _LCD_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+"221
+[; ;main.c: 221:     LCD_Write_String("Press '*' to ");
+[e ( _LCD_Write_String (1 :s 17C ]
+"222
+[; ;main.c: 222:     LCD_Set_Cursor(2, 1);
+[e ( _LCD_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
+"223
+[; ;main.c: 223:     LCD_Write_String("try again..");
+[e ( _LCD_Write_String (1 :s 18C ]
+"225
+[; ;main.c: 225:     Key = 'n';
+[e = _Key -> -> 110 `ui `uc ]
+"226
+[; ;main.c: 226:     while (Key != '*')
+[e $U 1255  ]
+[e :U 1256 ]
+"227
+[; ;main.c: 227:     {
+{
+"228
+[; ;main.c: 228:       keypad_scanner(&Key, &Val);
+[e ( _keypad_scanner (2 , &U _Key &U _Val ]
+"229
+[; ;main.c: 229:     }
+}
+[e :U 1255 ]
+"226
+[; ;main.c: 226:     while (Key != '*')
+[e $ != -> _Key `ui -> 42 `ui 1256  ]
+[e :U 1257 ]
+"230
+[; ;main.c: 230:     RC1STA = 0x90;
+[e = _RC1STA -> -> 144 `i `uc ]
+"232
+[; ;main.c: 232:     while (!EUSART_is_tx_ready())
+[e $U 1258  ]
+[e :U 1259 ]
+"233
+[; ;main.c: 233:       ;
+[e :U 1258 ]
+"232
+[; ;main.c: 232:     while (!EUSART_is_tx_ready())
+[e $ ! != -> ( _EUSART_is_tx_ready ..  `i -> 0 `i 1259  ]
+[e :U 1260 ]
+"234
+[; ;main.c: 234:     EUSART_Write(Val);
+[e ( _EUSART_Write (1 -> _Val `uc ]
+"236
+[; ;main.c: 236:     LCD_Clear();
+[e ( _LCD_Clear ..  ]
+"237
+[; ;main.c: 237:     LCD_Set_Cursor(1, 1);
+[e ( _LCD_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+"238
+[; ;main.c: 238:     LCD_Write_String("Initialize the FPGA");
+[e ( _LCD_Write_String (1 :s 19C ]
+"239
+[; ;main.c: 239:     LCD_Set_Cursor(2, 1);
+[e ( _LCD_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
+"240
+[; ;main.c: 240:     LCD_Write_String("Please Wait ..");
+[e ( _LCD_Write_String (1 :s 20C ]
+"242
+[; ;main.c: 242:     _delay((unsigned long)((2000)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"243
+[; ;main.c: 243:   }
+}
+[e :U 1230 ]
+[e $U 1231  ]
+[e :U 1232 ]
+"244
+[; ;main.c: 244: }
+[e :UE 1219 ]
+}
+[a 1C 83 111 108 117 116 105 111 110 32 70 97 99 116 111 114 121 0 ]
+[a 6C 80 119 100 32 124 32 35 32 62 32 83 117 98 109 105 116 0 ]
+[a 7C 80 119 100 32 124 32 35 32 62 32 83 117 98 109 105 116 0 ]
+[a 14C 67 111 100 101 32 105 115 32 99 111 114 114 101 99 116 0 ]
+[a 2C 80 114 101 115 115 32 39 42 39 32 116 111 0 ]
+[a 8C 80 114 101 115 115 32 39 35 39 32 116 111 0 ]
+[a 16C 67 111 100 101 32 105 115 32 119 114 111 110 103 0 ]
+[a 12C 70 80 71 65 32 80 114 111 99 101 115 115 105 110 103 0 ]
+[a 10C 83 101 110 100 105 110 103 32 67 111 100 101 0 ]
+[a 4C 73 110 105 116 105 97 108 105 115 97 116 105 111 110 32 70 80 71 65 0 ]
+[a 19C 73 110 105 116 105 97 108 105 122 101 32 116 104 101 32 70 80 71 65 0 ]
+[a 15C 84 104 97 110 107 32 121 111 117 46 46 0 ]
+[a 18C 116 114 121 32 97 103 97 105 110 46 46 0 ]
+[a 5C 80 108 101 97 115 101 32 87 97 105 116 46 46 46 0 ]
+[a 13C 80 108 101 97 115 101 32 119 97 105 116 32 46 46 46 0 ]
+[a 9C 99 111 110 116 105 110 117 101 32 46 46 46 0 ]
+[a 11C 46 46 46 0 ]
+[a 20C 80 108 101 97 115 101 32 87 97 105 116 32 46 46 0 ]
+[a 3C 99 111 110 116 105 110 117 101 32 46 46 0 ]
+[a 17C 80 114 101 115 115 32 39 42 39 32 116 111 32 0 ]

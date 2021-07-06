@@ -17134,149 +17134,258 @@ void SYSTEM_Initialize(void);
 void OSCILLATOR_Initialize(void);
 # 44 "main.c" 2
 
+# 1 "/Applications/microchip/xc8/v2.32/pic/include/c99/string.h" 1 3
+# 25 "/Applications/microchip/xc8/v2.32/pic/include/c99/string.h" 3
+# 1 "/Applications/microchip/xc8/v2.32/pic/include/c99/bits/alltypes.h" 1 3
+# 411 "/Applications/microchip/xc8/v2.32/pic/include/c99/bits/alltypes.h" 3
+typedef struct __locale_struct * locale_t;
+# 26 "/Applications/microchip/xc8/v2.32/pic/include/c99/string.h" 2 3
+
+void *memcpy (void *restrict, const void *restrict, size_t);
+void *memmove (void *, const void *, size_t);
+void *memset (void *, int, size_t);
+int memcmp (const void *, const void *, size_t);
+void *memchr (const void *, int, size_t);
+
+char *strcpy (char *restrict, const char *restrict);
+char *strncpy (char *restrict, const char *restrict, size_t);
+
+char *strcat (char *restrict, const char *restrict);
+char *strncat (char *restrict, const char *restrict, size_t);
+
+int strcmp (const char *, const char *);
+int strncmp (const char *, const char *, size_t);
+
+int strcoll (const char *, const char *);
+size_t strxfrm (char *restrict, const char *restrict, size_t);
+
+char *strchr (const char *, int);
+char *strrchr (const char *, int);
+
+size_t strcspn (const char *, const char *);
+size_t strspn (const char *, const char *);
+char *strpbrk (const char *, const char *);
+char *strstr (const char *, const char *);
+char *strtok (char *restrict, const char *restrict);
+
+size_t strlen (const char *);
+
+char *strerror (int);
+# 65 "/Applications/microchip/xc8/v2.32/pic/include/c99/string.h" 3
+char *strtok_r (char *restrict, const char *restrict, char **restrict);
+int strerror_r (int, char *, size_t);
+char *stpcpy(char *restrict, const char *restrict);
+char *stpncpy(char *restrict, const char *restrict, size_t);
+size_t strnlen (const char *, size_t);
+char *strdup (const char *);
+char *strndup (const char *, size_t);
+char *strsignal(int);
+char *strerror_l (int, locale_t);
+int strcoll_l (const char *, const char *, locale_t);
+size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
+
+
+
+
+void *memccpy (void *restrict, const void *restrict, int, size_t);
+# 45 "main.c" 2
+
+
+
 uint8_t code = 0x00;
 char Key = 'n';
 unsigned int Val, Val_mod, Code, ID;
+unsigned int Val_mods[13];
 unsigned int counter = 13;
 
-void main(void) {
+
+
+
+
+void main(void)
+{
   SYSTEM_Initialize();
   I2C_Master_Init();
   LCD_Init(0x4E);
 
+  LCD_Clear();
+  LCD_Set_Cursor(1, 1);
+  LCD_Write_String("Solution Factory");
+
+  char msg[] = "WELCOME";
+  char dispmsg[] = "";
+  for (int i = 0; i < strlen(msg); i++)
+  {
+    LCD_Set_Cursor(2, 1);
+    strncat(&dispmsg, &msg[i], 1);
+    LCD_Write_String(dispmsg);
+    _delay((unsigned long)((300)*(4000000/4000.0)));
+  }
+
+  _delay((unsigned long)((2000)*(4000000/4000.0)));
+
+  LCD_Clear();
+  LCD_Set_Cursor(1, 1);
+  LCD_Write_String("Press '*' to");
+  LCD_Set_Cursor(2, 1);
+  LCD_Write_String("continue ..");
+
+  Key = 'n';
+  while (Key != '*')
+  {
+    keypad_scanner(&Key, &Val);
+  }
+
+
+  while (!EUSART_is_tx_ready())
+    ;
+  EUSART_Write(Val);
+
+  LCD_Clear();
+  LCD_Set_Cursor(1, 1);
+  LCD_Write_String("Initialisation FPGA");
+  LCD_Set_Cursor(2, 1);
+  LCD_Write_String("Please Wait...");
+
+  _delay((unsigned long)((2000)*(4000000/4000.0)));
+
+  while (1)
+  {
     LCD_Clear();
     LCD_Set_Cursor(1, 1);
-    LCD_Write_String("Master Camp 2021");
+    LCD_Write_String("Pwd | # > Submit");
     LCD_Set_Cursor(2, 1);
-    LCD_Write_String("  EFREI Paris ");
-    _delay((unsigned long)((2500)*(4000000/4000.0)));
 
-    LCD_Clear();
-    LCD_Set_Cursor(1, 1);
-    LCD_Write_String("  EFREI Paris ");
-    LCD_Set_Cursor(2, 1);
-    LCD_Write_String("Embedded Systems");
-    _delay((unsigned long)((2500)*(4000000/4000.0)));
-
-    LCD_Clear();
-    LCD_Set_Cursor(1, 1);
-    LCD_Write_String("  * Projet *");
-    LCD_Set_Cursor(2, 1);
-    LCD_Write_String("Solution Factory");
-    _delay((unsigned long)((2500)*(4000000/4000.0)));
-
-    LCD_Clear();
-    LCD_Set_Cursor(1, 1);
-    LCD_Write_String("Press '*' to");
-    LCD_Set_Cursor(2, 1);
-    LCD_Write_String("continue ..");
-
-    Key = 'n';
-    while(Key != '*')
+    counter = 0;
+    _Bool forcesubmit = 0;
+    char dispCode[16] = "";
+    while ((counter < 13))
     {
-        keypad_scanner(&Key, &Val);
+      switch_press_scan(&Key, &Val);
+      if (Key == '#')
+      {
+        forcesubmit = 1;
+        counter = 13;
+      }
+      else
+      {
+        if (Key == 'D' && counter > 0)
+        {
+          counter = counter - 1;
+          int size = strlen(dispCode);
+          dispCode[size - 1] = '\0';
+          LCD_Clear();
+          LCD_Set_Cursor(1, 1);
+          LCD_Write_String("Pwd | # > Submit");
+          LCD_Set_Cursor(2, 1);
+          LCD_Write_String(dispCode);
+        }
+        else
+        {
+
+
+          strncat(&dispCode, &Key, 1);
+
+          LCD_Set_Cursor(2, 1);
+          LCD_Write_String(dispCode);
+
+          ID = counter;
+          ID &= 0x0F;
+          ID <<= 4;
+          Code = Val;
+          Code &= 0x0F;
+          Val_mod = ID | Code;
+          Val_mods[counter] = Val_mod;
+
+          counter = counter + 1;
+          _delay((unsigned long)((500)*(4000000/4000.0)));
+        }
+      }
     }
 
+    if (!forcesubmit)
+    {
+      LCD_Clear();
+      LCD_Set_Cursor(1, 1);
+      LCD_Write_String("Press '#' to");
+      LCD_Set_Cursor(2, 1);
+      LCD_Write_String("continue ...");
 
-    while (!EUSART_is_tx_ready());
+      Key = 'n';
+      while (Key != '#')
+      {
+        keypad_scanner(&Key, &Val);
+      }
+    }
+
+    LCD_Clear();
+    LCD_Set_Cursor(1, 1);
+    LCD_Write_String("Sending Code");
+    LCD_Set_Cursor(2, 1);
+    LCD_Write_String("...");
+
+    for (int i = 0; i < 13; i++)
+    {
+      while (!EUSART_is_tx_ready())
+        ;
+      EUSART_Write(Val_mods[i]);
+      _delay((unsigned long)((500)*(4000000/4000.0)));
+    }
+
+    while (!EUSART_is_tx_ready())
+      ;
     EUSART_Write(Val);
 
     LCD_Clear();
     LCD_Set_Cursor(1, 1);
-    LCD_Write_String ("Initialize FPGA");
-    LCD_Set_Cursor(2,1);
-    LCD_Write_String("Please Wait...");
+    LCD_Write_String("FPGA Processing");
+    LCD_Set_Cursor(2, 1);
+    LCD_Write_String("Please wait ...");
+
+    code = EUSART_Read();
+    RC1STA = 0x00;
 
     _delay((unsigned long)((2000)*(4000000/4000.0)));
 
-
-    while(1)
+    if (code == 0xF1)
     {
-        LCD_Clear();
-        LCD_Set_Cursor(1, 1);
-        LCD_Write_String ("Enter Password");
-        LCD_Set_Cursor(2,1);
-
-        counter = 0;
-        while ( (counter <13 ))
-        {
-            switch_press_scan(&Key, &Val);
-            LCD_Write_Char(Key);
-            ID = counter;
-            ID &= 0x0F;
-            ID <<=4;
-            Code = Val;
-            Code &= 0x0F;
-            Val_mod = ID | Code;
-            while(!EUSART_is_tx_ready());
-            EUSART_Write(Val_mod);
-            counter = counter + 1;
-            _delay((unsigned long)((500)*(4000000/4000.0)));
-        }
-        LCD_Clear();
-        LCD_Set_Cursor(1, 1);
-        LCD_Write_String ("Press '#' to");
-        LCD_Set_Cursor(2,1);
-        LCD_Write_String ("continue ...");
-
-        Key = 'n';
-        while (Key != '#')
-        {
-            keypad_scanner(&Key, &Val);
-        }
-        while (!EUSART_is_tx_ready());
-        EUSART_Write(Val);
-
-        LCD_Clear();
-        LCD_Set_Cursor(1, 1);
-        LCD_Write_String ("FPGA Processing");
-        LCD_Set_Cursor(2,1);
-        LCD_Write_String ("Please wait ...");
-
-        code = EUSART_Read();
-        RC1STA = 0x00;
-
-        _delay((unsigned long)((2000)*(4000000/4000.0)));
-
-        if (code == 0xF1)
-        {
-            LCD_Clear();
-            LCD_Set_Cursor(1, 1);
-            LCD_Write_String ("Code is correct");
-            LCD_Set_Cursor(2,1);
-            LCD_Write_String ("Thank you..");
-        }
-        else
-        {
-            LCD_Clear();
-            LCD_Set_Cursor(1, 1);
-            LCD_Write_String("Code is wrong");
-        }
-        _delay((unsigned long)((2000)*(4000000/4000.0)));
-
-        LCD_Clear();
-        LCD_Set_Cursor(1, 1);
-        LCD_Write_String ("Press '*' to ");
-        LCD_Set_Cursor(2,1);
-        LCD_Write_String ("try again..");
-
-        Key = 'n';
-        while (Key != '*')
-        {
-            keypad_scanner(&Key, &Val);
-        }
-        RC1STA = 0x90;
-
-        while(!EUSART_is_tx_ready());
-        EUSART_Write(Val);
-
-        LCD_Clear();
-        LCD_Set_Cursor(1, 1);
-        LCD_Write_String ("Initialize the FPGA");
-        LCD_Set_Cursor(2,1);
-        LCD_Write_String ("Please Wait ..");
-
-        _delay((unsigned long)((2000)*(4000000/4000.0)));
+      LCD_Clear();
+      LCD_Set_Cursor(1, 1);
+      LCD_Write_String("Code is correct");
+      LCD_Set_Cursor(2, 1);
+      LCD_Write_String("Thank you..");
     }
+    else
+    {
+      LCD_Clear();
+      LCD_Set_Cursor(1, 1);
+      LCD_Write_String("Code is wrong");
+    }
+    _delay((unsigned long)((2000)*(4000000/4000.0)));
 
+    LCD_Clear();
+    LCD_Set_Cursor(1, 1);
+    LCD_Write_String("Press '*' to ");
+    LCD_Set_Cursor(2, 1);
+    LCD_Write_String("try again..");
+
+    Key = 'n';
+    while (Key != '*')
+    {
+      keypad_scanner(&Key, &Val);
+    }
+    RC1STA = 0x90;
+
+    while (!EUSART_is_tx_ready())
+      ;
+    EUSART_Write(Val);
+
+    LCD_Clear();
+    LCD_Set_Cursor(1, 1);
+    LCD_Write_String("Initialize the FPGA");
+    LCD_Set_Cursor(2, 1);
+    LCD_Write_String("Please Wait ..");
+
+    _delay((unsigned long)((2000)*(4000000/4000.0)));
+  }
 }
